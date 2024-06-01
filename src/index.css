@@ -1,0 +1,52 @@
+.recycleLogo {
+  width: 100px;
+  height: 100px;
+  margin-right: 5%;
+}
+
+.welcomeSection {
+  margin: 10%;
+}
+
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: auto; 
+}
+
+/* 
+.header {
+  font-family: sans-serif;
+  color: #00000067;
+  font-size:xx-large;
+}  */
+
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: auto; 
+}
+
+.bottlebutton {
+  margin: 50px;
+}
+
+.canbutton {
+  margin: 50px;
+}
+
+.moneyearned{
+  margin-top: 20%;
+}
+.voucher{
+  padding: 10%;
+  border-radius: 10px;
+  background-color: #F9FAFB;
+}
+
+.voucherbutton{
+  margin-top: 5%;
+}
