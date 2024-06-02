@@ -33,8 +33,7 @@ jobs:
                   VITE_MEASUREMENT_ID: '${{ secrets.MESSUREMENT_ID }}'
                   VITE_ENV: production
               run: |
-                  yarn install
-                  yarn run build:prod
+                  npm ci && npm run build
 
             - name: Deploy to Firebase
               uses: FirebaseExtended/action-hosting-deploy@v0
