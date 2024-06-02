@@ -1,12 +1,16 @@
 import { useState } from 'react'
-
+import * as React from 'react'
 import {RECYCLE_BOTTLES, RECYCLE_CANS} from './constants/machinedata.jsx'
 import './index.css'
 import WelcomeSection from './modules/WelcomeSection'
 // import DemoTest from './modules/DemoTest'
-import * as React from 'react';
-import {Button, Grid, Typography} from '@mui/material/';
+import {Button, Grid, Typography} from '@mui/material/'
 // import AddIcon from '@mui/material/Icon' -- add icons on the buttons if you got time
+import { db } from '../firebase_config'
+import 'firebase/firestore'
+import { collection, addDoc } from 'firebase/firestore'
+
+
 
 
 
@@ -18,7 +22,8 @@ function App() {
   const moneyGenerated = (bottles, cans) => {
     const bottleMoney = bottles*RECYCLE_BOTTLES.value
     const canMoney = cans*RECYCLE_CANS.value
-    return bottleMoney+canMoney
+    const totalMoney = bottleMoney+canMoney
+    return totalMoney
   }
 
   /*Hanlding the delay for bottle*/
@@ -32,6 +37,20 @@ function App() {
     }, delayValue)
   }
   
+  async function getVoucher(numberBottlesDelivered, numberCansDelivered, moneyRecieved) {
+    try {
+      const docRef = await addDoc(collection(db, "voucher"), {
+        bottleDelivered: numberBottlesDelivered,
+        cansDelivered: numberCansDelivered,
+        moneyRecieved: moneyRecieved,
+      })
+      return docRef.id
+    } catch (e) {
+      console.error("could not add voucher: ", e)
+    }
+  }
+
+
 const delayedSetCan = (delayValue) => {
   setisButtonDisabled(true)
 
@@ -40,7 +59,6 @@ const delayedSetCan = (delayValue) => {
     setisButtonDisabled(false)
   }, delayValue)
 }
-
 
   
   return (
@@ -75,7 +93,15 @@ const delayedSetCan = (delayValue) => {
             Total money earned: {moneyGenerated(bottleCount,canCount)} <br/>
             </Typography>
             <div>
-              <Button variant="contained" color='success' onClick={() => alert("here is your voucher")}>
+              <Button variant="contained" color='success' onClick={async() => {
+              
+                  const docId = await getVoucher(bottleCount, canCount, moneyGenerated(bottleCount, canCount))
+                  if (docId) {
+                    alert(`Please show this ID to the cashier: ${docId}`)
+                  }
+                  setBottleCount(0)
+                  setCanCount(0)
+                }}>
                 Get voucher
               </Button>
             </div>
