@@ -1,7 +1,7 @@
 {
   "hosting": {
     "site": "recycle-bottles",
-    "public": "build",
+    "public": "dist",
     "ignore": [
       "firebase.json",
       "**/.*",
