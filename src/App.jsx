@@ -6,7 +6,7 @@ import WelcomeSection from './modules/WelcomeSection'
 // import DemoTest from './modules/DemoTest'
 import {Button, Grid, Typography} from '@mui/material/'
 // import AddIcon from '@mui/material/Icon' -- add icons on the buttons if you got time
-import { db } from '../firebase_config'
+import { db } from './config/firebase_config'
 import { collection, addDoc } from 'firebase/firestore'
 
 
