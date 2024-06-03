@@ -3,8 +3,8 @@
 
 folder env
 file .env
-  VITE_API_KEY=AIzaSyAxbWXpxLsGmGnSBuCEG62OM79IYPqyNXY
-  VITE_AUTH_DOMAIN=recycle-bottles-project.firebaseapp.com
+  VITE_API_KEY=AIzaSyAxbWXpxLsGmGnSBuCEG62OM79IYPqyNXY /n
+  VITE_AUTH_DOMAIN=recycle-bottles-project.firebaseapp.com /n
   VITE_PROJECT_ID=recycle-bottles-project
   VITE_STORAGE_BUCKET=recycle-bottles-project.appspot.com
   VITE_MESSAGE_SENDER_ID=37376978764
